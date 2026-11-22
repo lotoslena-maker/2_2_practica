@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="uk">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Web Scraping Lab | МетІАЗ ОВУ 2.2</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="{{ url_for('static', filename='app.js') }}" defer></script></head>
+<body>
+<header class="hero"><div class="container">
+<p class="tag">МЕТІАЗ ОВУ · ГРУПОВЕ ЗАНЯТТЯ 2.2</p><h1>Web Scraping Lab</h1>
+<p class="lead">Міні вебзастосунок для пояснення вебскрапінгу й парсингу. Від першого файлу у VS Code до готової таблиці новин.</p>
+<div class="pills"><span>Flask</span><span>requests</span><span>BeautifulSoup</span><span>HTML · CSS · JavaScript</span></div>
+</div></header>
+<div class="container">
+<nav class="tabs" aria-label="Навчальні вкладки">
+<button type="button" class="tab active" data-page="one">01 · Як побудовано і запустити</button>
+<button type="button" class="tab" data-page="two">02 · Скрейпінг АрміяInform</button>
+<button type="button" class="tab" data-page="three">03 · Висновки та вправи</button>
+</nav>
+<main>
+<section id="one" class="page active"><div class="heading"><span>ПЕРША ВКЛАДКА</span><h2>Структура проєкту та запуск у VS Code</h2><p>Пояснення для слухачів, які вперше запускають Flask.</p></div>
+<div class="card"><h3>1. Що вміє застосунок?</h3><p>Наочно показує, як вебсторінка взаємодіє з Python-сервером, як отримати HTML через мережу, вибрати з нього потрібні заголовки, сформувати JSON і відобразити таблицю.</p><div class="flow"><b>Користувач</b><i>→</i><b>HTML / JavaScript</b><i>→</i><b>Flask</b><i>→</i><b>requests</b><i>→</i><b>BeautifulSoup</b><i>→</i><b>JSON / таблиця</b></div></div>
+<div class="card"><h3>2. Структура папок у VS Code</h3><pre>flask_demo/
+├── app.py                 # Python + Flask + парсер
+├── requirements.txt       # які бібліотеки встановити
+├── sample_news.html       # локальна навчальна HTML-сторінка
+├── .gitignore             # що не додавати у Git
+├── templates/
+│   └── index.html         # вигляд / зміст вебсторінки
+└── static/
+    ├── style.css          # кольори / розміщення
+    └── app.js             # кнопки / вкладки / API / таблиця</pre>
+<div class="explain"><b>Чому папки називаються саме templates і static?</b><p>Flask за замовчуванням шукає HTML-шаблони у <code>templates</code>, а статичні файли CSS та JavaScript — у <code>static</code>. Це домовленість фреймворку, тому вам не потрібно вручну налаштовувати шляхи для кожного файлу.</p></div>
+<div class="filecards">
+<article><strong>app.py · Flask</strong><p>Створює Python-вебсервер, задає URL-маршрути <code>/</code>, <code>/api/demo</code>, <code>/api/live</code>. Повертає HTML або JSON.</p></article>
+<article><strong>app.py · requests</strong><p>Створює HTTP GET-запит до сайту АрміяInform і отримує HTML-відповідь. Сам не вилучає заголовки.</p></article>
+<article><strong>app.py · BeautifulSoup</strong><p>Розбирає HTML і шукає теги заголовків та посилання за CSS-селекторами. Сам не відкриває вебсайт.</p></article>
+<article><strong>templates/index.html · HTML</strong><p>Описує видимі блоки сторінки: вкладки, кнопки, текст пояснення, таблицю й поля виводу.</p></article>
+<article><strong>static/style.css · CSS</strong><p>Оформлює інтерфейс: кольори, шрифти, адаптивну сітку, картки та кнопки. Не завантажує інформацію.</p></article>
+<article><strong>static/app.js · JavaScript</strong><p>Реагує на натискання кнопок, звертається до Flask через <code>fetch()</code> і заповнює таблицю результатами.</p></article>
+<article><strong>requirements.txt</strong><p>Перелік бібліотек, які потрібно встановити командою <code>pip install -r requirements.txt</code>.</p></article>
+<article><strong>sample_news.html</strong><p>Вигаданий навчальний HTML-документ. Дозволяє відпрацювати парсинг, навіть якщо Інтернету немає.</p></article>
+</div></div>
+<div class="card"><h3>3. Запуск по кроках</h3>
+<div class="steps">
+<div><span>КРОК 01</span><h4>Завантажити код</h4><p>У репозиторії <a href="https://github.com/lotoslena-maker/2_2_practica" target="_blank" rel="noopener">lotoslena-maker/2_2_practica</a> натиснути <b>Code → Download ZIP</b>, розпакувати. Або скористатися командою:</p><pre>git clone https://github.com/lotoslena-maker/2_2_practica.git</pre></div>
+<div><span>КРОК 02</span><h4>Відкрити папку у VS Code</h4><p>У VS Code: <b>File → Open Folder → 2_2_practica → flask_demo</b>. У лівій панелі Explorer з'являться файли. Оберіть <b>Terminal → New Terminal</b>.</p></div>
+<div><span>КРОК 03</span><h4>Створити віртуальне середовище</h4><p>Введіть у терміналі:</p><pre>python -m venv .venv</pre><p>Папка <code>.venv</code> містить окремий Python і встановлені пакети для цього проєкту. Її не потрібно завантажувати до GitHub.</p></div>
+<div><span>КРОК 04 · WINDOWS</span><h4>Встановити бібліотеки</h4><pre>.\.venv\Scripts\python.exe -m pip install -r requirements.txt</pre><p>Для Ubuntu замість цього:</p><pre>.venv/bin/python -m pip install -r requirements.txt</pre></div>
+<div><span>КРОК 05 · WINDOWS</span><h4>Запустити Flask-сервер</h4><pre>.\.venv\Scripts\python.exe app.py</pre><p>Для Ubuntu:</p><pre>.venv/bin/python app.py</pre><p>Очікуване повідомлення у терміналі: <code>Running on http://127.0.0.1:5000</code>. Термінал залишається запущеним, поки працює сервер.</p></div>
+<div><span>КРОК 06</span><h4>Відкрити браузер</h4><p>Увести <a href="http://127.0.0.1:5000" target="_blank" rel="noopener">http://127.0.0.1:5000</a> на тому самому комп'ютері. Перейдіть на другу вкладку й натисніть <b>Навчальний запуск</b>.</p></div>
+<div><span>КРОК 07</span><h4>Зупинити сервер</h4><p>Повернутися в термінал VS Code і натиснути <b>Ctrl+C</b>. Після зупинки сторінка за локальною адресою перестане обслуговувати нові запити.</p></div>
+</div>
+<div class="notice"><b>Важливо:</b> відкриття файлу <code>templates/index.html</code> подвійним клацанням не замінює запуску Flask. У шаблоні є конструкція <code>url_for(...)</code>, яку обробляє сервер. Крім того, JavaScript звертається до локальних API-маршрутів Flask.</div>
+</div>
+<div class="card"><h3>4. Як перевірити, що все працює?</h3><p>Спочатку перейдіть за адресою <code>http://127.0.0.1:5000/api/demo</code>. Якщо Flask запущено, браузер відобразить JSON зі списком навчальних новин. Після цього перейдіть на головну сторінку й перевірте кнопки другої вкладки.</p><div class="notice positive">Flask — це сервер; HTML — структура; CSS — оформлення; JavaScript — взаємодія; requests — отримання HTML; BeautifulSoup — вилучення даних.</div></div></section>
+<section id="two" class="page"><div class="heading"><span>ДРУГА ВКЛАДКА</span><h2>АрміяInform: як працює вебскрапінг і парсинг</h2><p>Наочна демонстрація послідовності дій. Рекомендовано почати з локального навчального режиму.</p></div>
+<div class="card"><h3>1. Розмежовуємо поняття</h3><div class="filecards"><article><strong>Вебскрапінг</strong><p>Організований процес отримання інформації з вебсторінки: звернення до ресурсу, отримання HTML, витяг полів і збереження.</p></article><article><strong>Парсинг</strong><p>Окрема частина процесу: програма розбирає HTML і вибирає потрібні теги та їхній текст або атрибути.</p></article></div><div class="flow"><b>Flask приймає команду</b><i>→</i><b>requests завантажує</b><i>→</i><b>BeautifulSoup вилучає</b><i>→</i><b>JS показує</b></div></div>
+<div class="card"><h3>2. Оберіть режим</h3><div class="actions"><button class="button primary" id="demoBtn" type="button">Навчальний запуск (працює локально)</button><button class="button outline" id="liveBtn" type="button">Живий запит до АрміяInform</button></div><p class="small">Живий режим виконує один добровільний HTTP-запит лише після перевірки robots.txt. Доступність і кількість результатів не гарантуються. Якщо сайт обмежує автоматизацію, використовуйте навчальний HTML.</p><div id="status" class="status" role="status">Щоб почати, натисніть кнопку.</div></div>
+<div id="pipeline" hidden>
+<div class="card"><span class="kicker">ЕТАП 1 · FLASK</span><h3>Приймаємо команду від браузера</h3><p>JavaScript викликає <code>fetch('/api/demo')</code> або <code>fetch('/api/live')</code>. Flask визначає маршрут і викликає відповідну Python-функцію.</p><pre>@app.get("/api/demo")
+def demo():
+    html = Path("sample_news.html").read_text(...)
+    news = extract_news(html, SOURCE_URL)
+    return jsonify({"articles": news})</pre></div>
+<div class="card"><span class="kicker">ЕТАП 2 · REQUESTS / HTML</span><h3>Отримуємо сирий HTML</h3><p id="requestDescription"></p><pre>response = requests.get(
+    SOURCE_URL,
+    headers={"User-Agent": USER_AGENT},
+    timeout=(4, 12)
+)
+response.raise_for_status()
+html = response.text</pre><p>Для навчального режиму Flask читає <code>sample_news.html</code> замість мережевого запиту — це дозволяє працювати без Інтернету.</p><div class="metricbox"><div><b id="htmlLength">—</b><small>символів HTML</small></div><div><b id="linkCount">—</b><small>тегів &lt;a&gt;</small></div><div><b id="headingCount">—</b><small>заголовків h1–h3</small></div></div><details><summary>Показати перші 1600 символів HTML</summary><pre id="htmlExcerpt"></pre></details></div>
+<div class="card"><span class="kicker">ЕТАП 3 · BEAUTIFULSOUP</span><h3>Парсимо: знаходимо заголовки та посилання</h3><p>BeautifulSoup будує структуру HTML у пам'яті Python, шукає потрібні заголовки за селекторами, бере текст через <code>get_text()</code>, а адресу через атрибут <code>href</code>.</p><pre>soup = BeautifulSoup(html, "html.parser")
+for heading in soup.select(
+    "article h2, article h3, h2.entry-title"
+):
+    a = heading.find("a", href=True)
+    if a:
+        title = heading.get_text(" ", strip=True)
+        url = urljoin(SOURCE_URL, a["href"])</pre><p id="parseDescription"></p></div>
+<div class="card"><span class="kicker">ЕТАП 4 · JSON</span><h3>Передаємо структуру від Python до браузера</h3><p>Flask перетворює словники Python на JSON. JavaScript отримує цей JSON через <code>response.json()</code>.</p><details><summary>Показати отриманий JSON</summary><pre id="jsonOutput"></pre></details></div>
+<div class="card"><span class="kicker">ЕТАП 5 · HTML / CSS / JAVASCRIPT</span><h3>Формуємо таблицю для аналітика</h3><p>HTML містить елемент <code>&lt;table&gt;</code>; CSS оформлює його; JavaScript додає рядки без перезавантаження сторінки.</p><div class="tablewrap"><table><thead><tr><th>№</th><th>Заголовок</th><th>Дата (якщо є)</th><th>Першоджерело</th></tr></thead><tbody id="resultRows"></tbody></table></div><p class="small" id="tableInfo"></p><button class="button primary" type="button" id="csvBtn">Зберегти результати в CSV</button></div>
+</div>
+<div class="card"><h3>Чому парсер іноді не знаходить даних?</h3><p>Теги та CSS-класи вебсайтів змінюються. Якщо <code>requests</code> повернув HTML, але <code>BeautifulSoup</code> не знайшов заголовків, це не завжди мережна помилка. Потрібно проаналізувати реальну HTML-структуру через DevTools браузера (F12) та оновити селектори. Не обходьте CAPTCHA, блокування та заборони.</p></div></section>
+<section id="three" class="page"><div class="heading"><span>ТРЕТЯ ВКЛАДКА</span><h2>Висновки, перевірка знань і завдання</h2><p>Закріпіть ролі компонентів і продемонструйте отриманий CSV.</p></div>
+<div class="card"><h3>Головні висновки</h3><ol><li>Flask забезпечує зв'язок між браузером і Python: приймає запити, запускає логіку й повертає JSON.</li><li>requests виконує HTTP-запит та отримує вміст вебсторінки, але не знає, який текст є заголовком новини.</li><li>BeautifulSoup аналізує HTML та вилучає потрібні значення за селекторами — це парсинг.</li><li>HTML, CSS і JavaScript разом формують користувацький інтерфейс: структура, оформлення та поведінка.</li><li>Зібрані дані потрібно перевіряти, зберігати посилання на джерела й дотримуватися правил використання сайтів.</li></ol></div>
+<div class="card"><h3>Контрольні запитання</h3><div class="questions"><label>1. Яка бібліотека виконує GET-запит до сервера?<select id="q1"><option value="">Виберіть відповідь</option><option value="correct">requests</option><option>BeautifulSoup</option><option>CSS</option></select></label><label>2. Що означає парсинг HTML?<select id="q2"><option value="">Виберіть відповідь</option><option value="correct">Вилучення потрібних вузлів і значень</option><option>Зміна кольору сторінки</option><option>Створення віртуального середовища</option></select></label><label>3. Де за замовчуванням Flask шукає HTML-шаблони?<select id="q3"><option value="">Виберіть відповідь</option><option>static</option><option value="correct">templates</option><option>venv</option></select></label><label>4. Який файл обробляє натискання кнопки у браузері?<select id="q4"><option value="">Виберіть відповідь</option><option value="correct">static/app.js</option><option>requirements.txt</option><option>sample_news.html</option></select></label></div><button class="button primary" id="checkQuiz" type="button">Перевірити знання</button><p id="quizResult" class="status"></p></div>
+<div class="card"><h3>Мініпрактика для слухача</h3><ol><li>Запустіть проєкт у VS Code й відкрийте <code>127.0.0.1:5000</code>.</li><li>Виконайте локальний збір новин та покажіть HTML, JSON і таблицю.</li><li>Знайдіть у коді місце, де використовується requests, і місце, де використовується BeautifulSoup.</li><li>Змініть одну вигадану новину у <code>sample_news.html</code>, повторіть збір і перевірте, чи оновилася таблиця.</li><li>Збережіть результат у CSV, відкрийте його в Excel та поясніть значення стовпців.</li></ol><div class="notice positive"><b>Очікуваний результат:</b> слухач самостійно запускає Flask, пояснює призначення кожного файла і демонструє перетворення HTML → список словників → JSON → таблиця → CSV.</div></div>
+<div class="card"><h3>Завдання для самостійного продовження</h3><p>Додати до результатів стовпець <b>«Категорія новини»</b>, а до інтерфейсу — фільтр за словом у заголовку. Спочатку реалізувати це на локальному HTML-зразку, а потім, за наявності дозволу й доступності сайту, перевірити на справжній сторінці.</p></div></section>
+</main></div><footer>Навчальний демонстратор МетІАЗ ОВУ · Дані навчального режиму вигадані · Публічний репозиторій не призначений для службових даних</footer>
+</body></html>
