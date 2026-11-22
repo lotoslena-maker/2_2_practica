@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Групове заняття 2.2: основи збору даних через Інтернет і формалізовані документи. Теорія, Python, інтерактивні вправи."><title>МетІАЗ ОВУ · Заняття 2.2</title>
+<style>
+:root{--bg:#f4f6f2;--paper:#fff;--ink:#1f2a22;--muted:#627062;--olive:#52683b;--deep:#233627;--orange:#e9a34d;--line:#dde5d9;--pale:#eef3e8}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.57 system-ui,Segoe UI,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:var(--olive)}.wrap{max-width:1170px;margin:auto;padding:0 22px}.top{position:sticky;top:0;background:#ffffffec;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:9}.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:11px;padding-bottom:11px;gap:12px}.brand{font-weight:900;letter-spacing:.06em}.brand small{display:block;font-weight:400;font-size:12px;color:var(--muted);letter-spacing:0}.top a{text-decoration:none;font-size:13px}.hero{background:radial-gradient(circle at 100% 0%,#d4913855,transparent 37%),linear-gradient(120deg,#243629,#627747);color:#fff;padding:63px 0}.hero h1{font-size:clamp(34px,4.6vw,56px);line-height:1.1;max-width:900px;margin:14px 0}.hero p{max-width:850px;color:#e6efe3;font-size:18px}.eyebrow{font-size:12px;letter-spacing:.15em;font-weight:900;color:#ffd39c;text-transform:uppercase}.chips{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0}.chips span{padding:5px 11px;border:1px solid #afbfaa80;border-radius:99px;font-size:13px}.btn{background:var(--olive);color:#fff;display:inline-block;text-decoration:none;border:0;padding:11px 16px;border-radius:11px;font-weight:800}.btn.orange{background:var(--orange);color:#1b291b}.btn.ghost{background:#e9efe4;color:#293a2c}.btn:focus-visible,.tab:focus-visible{outline:3px solid var(--orange);outline-offset:2px}.layout{display:grid;grid-template-columns:225px minmax(0,1fr);align-items:start;gap:20px;padding-top:24px;padding-bottom:65px}.sidebar{position:sticky;top:82px;background:#fff;padding:16px;border:1px solid var(--line);border-radius:16px}.sidebar strong{font-size:12px;color:#69786a;letter-spacing:.09em}.sidebar a{display:block;padding:9px 10px;border-radius:9px;color:var(--ink);text-decoration:none;font-size:14px}.sidebar a:hover{background:var(--pale)}.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:27px;margin-bottom:19px;box-shadow:0 8px 26px #1b2c1b08}.panel h2{font-size:clamp(25px,3vw,34px);margin:0 0 11px;line-height:1.2}.panel h3{font-size:21px;margin:23px 0 8px}.panel h4{font-size:17px;margin:18px 0 6px}.panel p{margin:9px 0 14px}.muted{color:var(--muted)}.sectionmark{font-size:12px;letter-spacing:.1em;font-weight:900;color:#a86d29}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:15px 0}.tile{background:#fafcf9;border:1px solid var(--line);border-radius:12px;padding:17px}.tile h4{margin:0 0 6px}.tile p{margin:0;color:#5c6d60}.tabs{display:flex;gap:7px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid var(--line);margin:16px 0}.tab{border:1px solid #d6e0d0;border-radius:99px;background:#fff;padding:8px 12px;font-weight:750;font-size:14px;color:#345038}.tab.active{background:var(--olive);color:#fff;border-color:var(--olive)}.tabcontent{display:none}.tabcontent.active{display:block}.flow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:18px 0}.flow span{background:var(--pale);padding:8px 11px;border-radius:9px;font-weight:700}.flow b{color:#b87b34}.note{padding:13px 15px;border-left:4px solid var(--orange);background:#fff8ed;border-radius:0 10px 10px 0;margin:15px 0}.note.safe{background:#f0f6ec;border-color:var(--olive)}pre{background:#17271f;color:#eaf1e7;padding:17px;border-radius:12px;overflow:auto;white-space:pre;font:13px/1.55 Consolas,ui-monospace,monospace}code{font-family:Consolas,ui-monospace,monospace}.result{background:#edf5e9;border:1px solid #d2e4cc;border-radius:11px;white-space:pre-wrap;font:13px/1.55 Consolas,monospace;padding:14px;overflow:auto}.small{font-size:13px;color:var(--muted)}.scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid var(--line);text-align:left;padding:10px;vertical-align:top}th{background:var(--pale)}.demo{padding:18px;border-radius:13px;border:1px solid var(--line);background:#fbfcf9;margin:19px 0}.demo label,.field label{display:block;font-size:14px;font-weight:750;margin:8px 0 5px}.field input,.field select,.field textarea,.demo select{width:100%;padding:10px;border-radius:8px;border:1px solid #cbd6c7;background:#fff;color:var(--ink)}textarea{min-height:85px}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:14px 0}.card{border:1px solid var(--line);border-radius:11px;background:white;padding:12px}.card b{display:block}.card span{font-size:13px;color:var(--muted)}.score{font-weight:800;min-height:25px;margin-top:10px}.score.ok{color:#247044}.score.bad{color:#a66a2d}.choices label{display:block;font-weight:400;background:#f5f7f3;padding:8px;border-radius:8px;margin:6px 0;cursor:pointer}.choices input{margin-right:8px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.foot{padding:25px;border-top:1px solid var(--line);color:var(--muted);text-align:center;font-size:13px}@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{position:static}.sidebar a{display:inline-block}.cards{grid-template-columns:1fr 1fr}}@media(max-width:540px){.grid,.two,.cards{grid-template-columns:1fr}.panel{padding:19px}.hero{padding:45px 0}.top a{font-size:12px}.wrap{padding:0 15px}}@media print{.sidebar,.tabs,.top,.btn{display:none!important}.layout{display:block}.tabcontent{display:block!important}.panel{break-inside:avoid;box-shadow:none}}
+</style></head><body>
+<header class="top"><div class="wrap"><div class="brand">МЕТІАЗ ОВУ<small>Інтерактивний конспект • групове заняття 2.2</small></div><a href="https://github.com/lotoslena-maker/2_2_practica" target="_blank" rel="noopener">Репозиторій заняття ↗</a></div></header>
+<div class="hero"><div class="wrap"><div class="eyebrow">Тема 2 · Заняття 2.2 · Навчальне середовище</div><h1>Методи збору даних для інформаційно-аналітичного забезпечення</h1><p>Два навчальні питання: від зчитування інформації з вебсторінок та API до побудови електронних форм і підготовки структурованих даних. Теорія, код, очікуваний результат і практичні тренажери в одному місці.</p><div class="chips"><span>01 · Збір через Інтернет</span><span>02 · Формалізовані документи</span><span>Python · HTML · JSON · CSV</span><span>Безпечні синтетичні приклади</span></div><a class="btn orange" href="#internet">Розпочати заняття ↓</a></div></div>
+<div class="wrap layout"><aside class="sidebar"><strong>НАВІГАЦІЯ</strong><a href="#intro">Мета заняття</a><a href="#internet">1. Збір через Інтернет</a><a href="#http">HTTP / HTTPS</a><a href="#structure">HTML / CSS / DOM</a><a href="#python">Python: requests / BS4</a><a href="#advanced">Selenium / Scrapy</a><a href="#api">API / JSON</a><a href="#documents">2. Формалізовані документи</a><a href="#practice">Практикум</a><a href="#quiz">Підсумковий тест</a><p class="small">Всі тренажери працюють локально у браузері. Вони не виконують реальних мережевих запитів.</p></aside><main>
+<section class="panel" id="intro"><div class="sectionmark">НАВЧАЛЬНА МЕТА</div><h2>Від сирих даних до придатної для аналізу інформації</h2><p>Після заняття слухач має вміти пояснити, як браузер отримує дані, відрізняти скрапінг від API, читати HTML, розуміти основні конструкції Python та спроєктувати форму з валідацією.</p><div class="flow"><span>Інформаційна потреба</span><b>→</b><span>Джерело</span><b>→</b><span>Збір</span><b>→</b><span>Перевірка</span><b>→</b><span>CSV / JSON / ІАС</span></div><div class="note safe"><b>Правила практики:</b> усі приклади стосуються вигаданих навчальних новин і журналів технічного обслуговування. Не вводьте службові, персональні або оперативні дані у публічні вебформи. Автоматизація дозволена лише для ресурсів, умови яких це допускають.</div></section>
+<section class="panel" id="internet"><div class="sectionmark">НАВЧАЛЬНЕ ПИТАННЯ № 1</div><h2>Основи збору даних через мережу Інтернет</h2><p>Вебсайти публікують текст, таблиці, зображення та посилання у вигляді HTML-документів або завантажують дані з API. Аналітик не повинен вручну копіювати кожне повідомлення: він може автоматизувати отримання, відбір, структурування та перевірку відомостей.</p><div class="grid"><div class="tile"><h4>Вебскрапінг (web scraping)</h4><p>Програма завантажує HTML, знаходить потрібні елементи та вилучає з них значення: заголовки, дату, посилання чи вміст таблиці.</p></div><div class="tile"><h4>API (Application Programming Interface)</h4><p>Програма звертається до документованої адреси сервісу та отримує готові структуровані дані, зазвичай у JSON.</p></div></div><h3>Автоматизований збір — чотири кроки</h3><div class="flow"><span>GET-запит</span><b>→</b><span>HTML / JSON</span><b>→</b><span>Вилучення полів</span><b>→</b><span>Збереження результату</span></div><p>У PDF окремо розглянуто пасивний і активний збір та структуровані й неструктуровані дані. Важливе уточнення: навіть офіційний API-запит створює звернення до сервера і відповідний цифровий слід; це не «невидима» дія.</p></section>
+<section class="panel" id="http"><div class="sectionmark">ТЕХНІЧНІ ОСНОВИ</div><h2>HTTP та HTTPS: як браузер спілкується із сервером</h2><p><b>HTTP</b> — протокол прикладного рівня, за яким клієнт надсилає запит, а сервер повертає відповідь. <b>HTTPS</b> — HTTP поверх захищеного TLS-з’єднання: дані під час передавання шифруються, а сертифікат допомагає перевірити справжність сервера.</p><div class="scroll"><table><thead><tr><th>Критерій</th><th>HTTP</th><th>HTTPS</th></tr></thead><tbody><tr><td>Типова адреса</td><td>http://</td><td>https://</td></tr><tr><td>Типовий порт</td><td>80</td><td>443</td></tr><tr><td>Шифрування під час передачі</td><td>Немає</td><td>TLS</td></tr><tr><td>Ризик перехоплення/зміни в дорозі</td><td>Вищий</td><td>Знижений за належної конфігурації</td></tr><tr><td>Чи гарантує достовірність тексту на сайті?</td><td>Ні</td><td>Також ні</td></tr></tbody></table></div><h3>Що саме відбувається при GET-запиті?</h3><pre>GET /news?category=education&amp;limit=2 HTTP/1.1
+Host: example.org
+Accept: text/html
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+
+&lt;h2&gt;Навчальна новина&lt;/h2&gt;</pre><p><b>GET</b> отримує ресурс, <b>POST</b> зазвичай надсилає дані на обробку. Запит може містити URL, параметри, заголовки й іноді тіло. Відповідь має статус, заголовки та тіло.</p><div class="cards"><div class="card"><b>200 OK</b><span>Запит виконано успішно</span></div><div class="card"><b>404 Not Found</b><span>Ресурс не знайдено</span></div><div class="card"><b>429 Too Many Requests</b><span>Перевищено частоту запитів</span></div><div class="card"><b>401 Unauthorized</b><span>Потрібна автентифікація</span></div><div class="card"><b>403 Forbidden</b><span>Сервер відмовив у доступі</span></div><div class="card"><b>500 Server Error</b><span>Помилка на боці сервера</span></div></div>
+<div class="demo"><h3>Тренажер: склади GET-запит</h3><div class="two"><div class="field"><label for="category">Категорія</label><select id="category"><option value="education">education</option><option value="technology">technology</option><option value="science">science</option></select></div><div class="field"><label for="limit">Кількість записів</label><select id="limit"><option>2</option><option>5</option><option>10</option></select></div></div><button class="btn" onclick="buildRequest()">Сформувати запит</button><div class="result" id="requestOut">Оберіть параметри та натисніть кнопку.</div><p class="small">Це візуалізація синтетичного запиту без звернення до зовнішнього сервера.</p></div></section>
+<section class="panel" id="structure"><h2>Структура вебсторінки: HTML, CSS, DOM</h2><div class="grid"><div class="tile"><h4>HTML — «скелет»</h4><p>Теги задають зміст і структуру: <code>&lt;h2&gt;</code> — заголовок, <code>&lt;p&gt;</code> — абзац, <code>&lt;a&gt;</code> — посилання.</p></div><div class="tile"><h4>CSS — «оформлення»</h4><p>Кольори, відступи та класи. CSS-селектор <code>.news-title</code> знаходить елемент із класом <code>news-title</code>.</p></div><div class="tile"><h4>DOM — «дерево об’єктів»</h4><p>Браузер перетворює документ на дерево вузлів, яке може змінювати JavaScript.</p></div><div class="tile"><h4>JavaScript — «поведінка»</h4><p>Обробляє натискання, запити до API й динамічне додавання вмісту без перезавантаження.</p></div></div><h3>Один приклад — три погляди</h3><div class="tabs" data-group="structure"><button class="tab active" data-tab="html">HTML</button><button class="tab" data-tab="css">CSS</button><button class="tab" data-tab="dom">DOM-дерево</button></div><div class="tabcontent active" data-panel="structure:html"><pre>&lt;article class="news-card"&gt;
+  &lt;h3 class="news-title"&gt;Навчальний семінар&lt;/h3&gt;
+  &lt;p class="date"&gt;22.11.2026&lt;/p&gt;
+  &lt;a href="/news/1"&gt;Читати&lt;/a&gt;
+&lt;/article&gt;</pre></div><div class="tabcontent" data-panel="structure:css"><pre>.news-card { border: 1px solid #ddd; padding: 16px; }
+.news-title { color: #52683b; font-weight: 700; }
+.date { color: #777; }</pre></div><div class="tabcontent" data-panel="structure:dom"><pre>document
+└── article.news-card
+    ├── h3.news-title → "Навчальний семінар"
+    ├── p.date → "22.11.2026"
+    └── a[href="/news/1"] → "Читати"</pre></div><div class="demo"><h3>Інтерактивний DOM-інспектор</h3><div id="domExample" class="card"><h4 class="news-title">Навчальний семінар</h4><p class="date">22.11.2026</p><a href="#structure">Читати докладніше</a></div><label for="selector">Введіть CSS-селектор</label><select id="selector"><option value=".news-title">.news-title</option><option value=".date">.date</option><option value="a">a</option><option value=".missing">.missing</option></select><button class="btn" onclick="inspectDOM()">Знайти елемент</button><div class="result" id="domOut">Виберіть селектор.</div></div></section>
+<section class="panel" id="python"><div class="sectionmark">БАЗОВИЙ ІНСТРУМЕНТАРІЙ PYTHON</div><h2>requests + BeautifulSoup: від HTML до таблиці</h2><p><b>requests</b> завантажує ресурс: надсилає HTTP-запити, читає код стану, заголовки, текст чи JSON. <b>BeautifulSoup</b> розбирає HTML і дозволяє шукати елементи за тегом, класом, id або CSS-селектором.</p><div class="note">Встановлення у терміналі VS Code: <code>python -m pip install requests beautifulsoup4</code>. Пакет інсталюється як <code>beautifulsoup4</code>, а імпорт має вигляд <code>from bs4 import BeautifulSoup</code>.</div><div class="tabs" data-group="python"><button class="tab active" data-tab="requests">1. requests</button><button class="tab" data-tab="soup">2. BeautifulSoup</button><button class="tab" data-tab="combined">3. Повний скрипт</button></div>
+<div class="tabcontent active" data-panel="python:requests"><h3>Надсилаємо GET і перевіряємо відповідь</h3><pre>import requests
+
+url = "https://example.com"
+try:
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+    print("Статус:", response.status_code)
+    print("Тип:", response.headers.get("Content-Type"))
+    print(response.text[:80])
+except requests.RequestException as error:
+    print("Помилка:", error)</pre><div class="result">Приклад очікуваного виводу (під час успішної відповіді):
+Статус: 200
+Тип: text/html
+&lt;!doctype html&gt;...</div><p><code>timeout=10</code> обмежує очікування, <code>raise_for_status()</code> повідомляє про помилки HTTP 4xx/5xx, <code>response.text</code> повертає декодований текст, <code>response.json()</code> декодує JSON-відповідь. Приклад вище ілюстративний: фактичний вивід залежить від сервера.</p></div>
+<div class="tabcontent" data-panel="python:soup"><h3>Знаходимо теги та вилучаємо текст</h3><pre>from bs4 import BeautifulSoup
+
+html = """
+&lt;article&gt;
+ &lt;h3 class="news-title"&gt;Навчальний семінар&lt;/h3&gt;
+ &lt;h3 class="news-title"&gt;Практикум Python&lt;/h3&gt;
+ &lt;a href="/news/1"&gt;Докладніше&lt;/a&gt;
+&lt;/article&gt;
+"""
+soup = BeautifulSoup(html, "html.parser")
+titles = soup.select("h3.news-title")
+
+for item in titles:
+    print(item.get_text(strip=True))
+print(soup.select_one("a").get("href"))</pre><div class="result">Навчальний семінар
+Практикум Python
+/news/1</div><p><code>select()</code> повертає список вузлів за CSS-селектором; <code>select_one()</code> — перший збіг або <code>None</code>; <code>get_text(strip=True)</code> вилучає текст без крайніх пробілів; <code>get("href")</code> читає атрибут.</p></div>
+<div class="tabcontent" data-panel="python:combined"><h3>Відтворюваний приклад без Інтернету</h3><pre>from bs4 import BeautifulSoup
+import csv
+
+html = """&lt;section&gt;
+&lt;article class="item"&gt;&lt;h3&gt;Новина А&lt;/h3&gt;&lt;time&gt;2026-11-20&lt;/time&gt;&lt;/article&gt;
+&lt;article class="item"&gt;&lt;h3&gt;Новина Б&lt;/h3&gt;&lt;time&gt;2026-11-21&lt;/time&gt;&lt;/article&gt;
+&lt;/section&gt;"""
+
+soup = BeautifulSoup(html, "html.parser")
+rows = []
+for article in soup.select("article.item"):
+    rows.append({
+        "title": article.select_one("h3").get_text(strip=True),
+        "date": article.select_one("time").get_text(strip=True),
+    })
+
+with open("news.csv", "w", newline="", encoding="utf-8-sig") as f:
+    writer = csv.DictWriter(f, fieldnames=["title", "date"])
+    writer.writeheader()
+    writer.writerows(rows)
+print(rows)</pre><div class="result">[{'title': 'Новина А', 'date': '2026-11-20'},
+ {'title': 'Новина Б', 'date': '2026-11-21'}]
+
+Файл news.csv:
+title,date
+Новина А,2026-11-20
+Новина Б,2026-11-21</div><p>Для справжнього дозволеного сайту замість локального <code>html</code> можна використати <code>requests.get(...).text</code>. Перед запуском перевіряйте правила доступу та обмеження частоти звернень.</p></div></section>
+<section class="panel" id="advanced"><div class="sectionmark">СУМІЖНІ ТЕХНІКИ</div><h2>Динамічні сайти, Selenium та масштабний збір</h2><p>Звичайний <code>requests</code> отримує первинну HTTP-відповідь, але не запускає JavaScript. Якщо сайт додає картки після завантаження сторінки, іноді потрібен браузерний інструмент. Перед цим варто перевірити, чи існує офіційний API.</p><div class="tabs" data-group="advanced"><button class="tab active" data-tab="selenium">Selenium</button><button class="tab" data-tab="scrapy">Scrapy</button><button class="tab" data-tab="limits">Виклики та захист</button></div>
+<div class="tabcontent active" data-panel="advanced:selenium"><h3>Selenium керує справжнім браузером</h3><p>Бібліотека запускає Chrome або Firefox, відкриває сторінку, очікує появу елементів у DOM і зчитує їхній текст. Вона корисна для JavaScript-сайтів, але споживає більше пам’яті й часу за звичайний HTTP-запит.</p><pre>python -m pip install selenium</pre><pre>from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# Безпечний локальний HTML-файл для вправи
+from pathlib import Path
+url = Path("demo_dynamic.html").resolve().as_uri()
+
+driver = webdriver.Chrome()
+try:
+    driver.get(url)
+    cards = WebDriverWait(driver, 10).until(
+        EC.presence_of_all_elements_located(
+            (By.CSS_SELECTOR, ".news-title")
+        )
+    )
+    for card in cards:
+        print(card.text)
+finally:
+    driver.quit()</pre><p>Щоб спробувати код, створіть файл <code>demo_dynamic.html</code> із кодом нижче в тій самій папці:</p><pre>&lt;!doctype html&gt;&lt;html lang="uk"&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;body&gt;&lt;div id="list"&gt;Завантаження...&lt;/div&gt;
+&lt;script&gt;
+setTimeout(() =&gt; {
+  document.querySelector("#list").innerHTML =
+   '&lt;h3 class="news-title"&gt;Новина після JavaScript&lt;/h3&gt;';
+}, 700);
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</pre><div class="result">Новина після JavaScript</div><p>Ключова ідея: не використовувати фіксовану затримку <code>sleep()</code>, а очікувати потрібний елемент через <code>WebDriverWait</code>.</p></div>
+<div class="tabcontent" data-panel="advanced:scrapy"><h3>Scrapy — фреймворк для керованого збору</h3><p>Scrapy підтримує чергу URL, обробники відповідей, повторні спроби, експорт результатів і налаштування навантаження. Він підходить для дозволених масштабних навчальних або дослідницьких задач.</p><pre>python -m pip install scrapy
+scrapy startproject lesson_scraper</pre><pre>import scrapy
+
+class ExampleSpider(scrapy.Spider):
+    name = "example"
+    allowed_domains = ["example.com"]
+    start_urls = ["https://example.com/"]
+
+    custom_settings = {
+        "ROBOTSTXT_OBEY": True,
+        "DOWNLOAD_DELAY": 2,
+        "CONCURRENT_REQUESTS_PER_DOMAIN": 1,
+    }
+
+    def parse(self, response):
+        yield {"title": response.css("h1::text").get()}</pre><p>Результат залежить від сторінки. Важливі налаштування: дотримання <code>robots.txt</code>, затримки й обмеження паралельності. Не намагайтеся обходити технічні заборони доступу.</p></div>
+<div class="tabcontent" data-panel="advanced:limits"><h3>Проблеми збору та коректні дії аналітика</h3><div class="scroll"><table><tr><th>Виклик</th><th>Що означає</th><th>Правильна реакція</th></tr><tr><td>Зміна HTML</td><td>CSS-селектор перестав знаходити поле</td><td>Перевірити DOM і оновити парсер</td></tr><tr><td>429</td><td>Перевищено ліміт</td><td>Зменшити частоту, врахувати Retry-After</td></tr><tr><td>403 / CAPTCHA</td><td>Доступ обмежено</td><td>Зупинитися, отримати дозвіл або використати офіційний API</td></tr><tr><td>Повтори</td><td>Одна подія з кількох джерел</td><td>Дедуплікація зі збереженням походження</td></tr><tr><td>Недостовірність</td><td>Сайт містить помилки або маніпуляції</td><td>Перевірка незалежними джерелами</td></tr></table></div><div class="note">HTTPS не гарантує правдивості джерела. API-ключ, IP-адреса, User-Agent і часові параметри можуть фіксуватися сервером. Працюйте з дозволеними даними й не завантажуйте чутливу інформацію в сторонні сервіси.</div></div></section>
+<section class="panel" id="api"><div class="sectionmark">СТРУКТУРОВАНИЙ ДОСТУП</div><h2>API: програма розмовляє з програмою</h2><p><b>API</b> — узгоджений програмний інтерфейс із правилами доступу та форматом результатів. <b>Endpoint</b> — адреса конкретного ресурсу; параметри дозволяють фільтрувати, заголовки можуть передавати налаштування й авторизацію, а JSON містить структуровані поля.</p><div class="grid"><div class="tile"><h4>Переваги API</h4><p>Документована структура, менше зайвого HTML, зазвичай передбачуваніші версії та поля.</p></div><div class="tile"><h4>Обмеження API</h4><p>Ліміти, ключі доступу, тарифи, дозвільні рівні й неповне охоплення даних.</p></div></div><h3>JSON: пари «ключ — значення»</h3><pre>{
+  "count": 2,
+  "items": [
+    {"id": 1, "title": "Семінар", "category": "education"},
+    {"id": 2, "title": "Практикум", "category": "education"}
+  ]
+}</pre><h3>Python: робота з API</h3><pre>import requests
+
+url = "https://api.example.org/news"  # УМОВНА адреса
+params = {"category": "education", "limit": 2}
+try:
+    response = requests.get(url, params=params, timeout=10)
+    response.raise_for_status()
+    data = response.json()
+    for item in data["items"]:
+        print(item["title"])
+except (requests.RequestException, ValueError, KeyError) as e:
+    print("Не вдалося отримати дані:", e)</pre><p class="small">Цей URL вигаданий і не призначений для виконання. Для роботи із реальним API потрібна офіційна документація, чинна адреса та, за необхідності, авторизація. Не зберігайте API-токени у публічному репозиторії.</p>
+<div class="demo"><h3>API-тренажер: відповідь на запит</h3><div class="two"><div class="field"><label for="apiCategory">Категорія</label><select id="apiCategory"><option value="education">education</option><option value="science">science</option></select></div><div class="field"><label for="apiLimit">Кількість</label><select id="apiLimit"><option>1</option><option>2</option><option>3</option></select></div></div><button class="btn" onclick="apiDemo()">Виконати умовний GET</button><div class="result" id="apiOut">Очікування запиту.</div></div><div class="scroll"><table><thead><tr><th>Критерій</th><th>Скрапінг</th><th>API</th></tr></thead><tbody><tr><td>Вхідний матеріал</td><td>HTML / DOM</td><td>JSON / XML</td></tr><tr><td>Залежність від дизайну</td><td>Висока</td><td>Зазвичай нижча</td></tr><tr><td>Доступ</td><td>Залежить від правил сайту</td><td>Описаний документацією API</td></tr><tr><td>Обмеження</td><td>HTML-структура, правила ресурсу</td><td>Квоти, автентифікація, дозволи</td></tr></tbody></table></div></section>
+<section class="panel" id="documents"><div class="sectionmark">НАВЧАЛЬНЕ ПИТАННЯ № 2</div><h2>Збір даних з використанням формалізованих документів</h2><p>На відміну від пошуку на сторонніх сайтах, тут аналітик спочатку визначає набір полів та правила заповнення. Кожна відповідь має однакову структуру, тому простіше перевіряти повноту, будувати таблиці та формувати звіти.</p><div class="flow"><span>Інформаційна потреба</span><b>→</b><span>Поля форми</span><b>→</b><span>Валідація</span><b>→</b><span>CSV</span><b>→</b><span>Аналітика</span></div><div class="tabs" data-group="forms"><button class="tab active" data-tab="design">Проєктування</button><button class="tab" data-tab="validation">Валідація</button><button class="tab" data-tab="export">Експорт та Pandas</button><button class="tab" data-tab="security">Платформи й безпека</button></div>
+<div class="tabcontent active" data-panel="forms:design"><h3>Проєктування форми — від мети до типів полів</h3><p>Спочатку сформулюйте: яке рішення залежить від відповідей? Потім оберіть тільки необхідні поля. Для нашого прикладу — <b>навчальний журнал технічного обслуговування умовних пристроїв</b>.</p><div class="scroll"><table><tr><th>Поле</th><th>Тип</th><th>Навіщо</th></tr><tr><td>Дата огляду</td><td>Дата, обов’язкове</td><td>Сортування в часі</td></tr><tr><td>Категорія пристрою</td><td>Список</td><td>Однакові назви категорій</td></tr><tr><td>Стан</td><td>Один варіант</td><td>Підрахунок часток</td></tr><tr><td>Кількість</td><td>Ціле додатне число</td><td>Числовий аналіз</td></tr><tr><td>Коментар</td><td>Необов’язковий текст</td><td>Контекст події</td></tr></table></div><p>Закриті питання дозволяють стандартизувати відповіді, відкриті додають контекст; шкали вимірюють оцінки, а умовна логіка показує додаткові поля лише за потреби.</p></div>
+<div class="tabcontent" data-panel="forms:validation"><h3>Перевірка введення — захист від «сміття»</h3><p>Обов’язкові поля, списки, числові межі, формат дати, зрозумілі підказки та повідомлення про помилки зменшують необхідність подальшого очищення. Валідацію потрібно виконувати і у браузері, і на сервері, якщо дані передаються на сервер.</p><pre>&lt;input type="date" required&gt;
+&lt;select required&gt;
+  &lt;option value=""&gt;Оберіть стан&lt;/option&gt;
+  &lt;option value="ready"&gt;Справний&lt;/option&gt;
+  &lt;option value="repair"&gt;Потребує ремонту&lt;/option&gt;
+&lt;/select&gt;
+&lt;input type="number" min="1" max="100" required&gt;</pre><p>Умовна логіка: якщо обрано «Потребує ремонту», відкривається поле «Опис несправності».</p></div>
+<div class="tabcontent" data-panel="forms:export"><h3>Експорт і подальша обробка</h3><p>Дані з форми можна зберегти в CSV для Excel, Python або бази даних. У Pandas корисні операції: <code>read_csv</code>, <code>drop_duplicates</code>, <code>fillna</code>, <code>to_datetime</code>.</p><pre>import pandas as pd
+
+df = pd.read_csv("records.csv", encoding="utf-8-sig")
+df["date"] = pd.to_datetime(df["date"], errors="coerce")
+df = df.drop_duplicates()
+print(df.groupby("status")["quantity"].sum())
+df.to_csv("clean_records.csv", index=False,
+          encoding="utf-8-sig")</pre><div class="result">Приклад результату для навчальних даних:
+status
+ready     8
+repair    3
+Name: quantity, dtype: int64</div><p>Після очищення потрібен контроль: чи не видалено різні факти як «дублікати», чи не підмінено відсутні значення довільними.</p></div>
+<div class="tabcontent" data-panel="forms:security"><h3>Google Forms, власні сервіси та контроль даних</h3><p>Google Forms або інші хмарні конструктори зручні для відкритих навчальних опитувань; для чутливої інформації потрібні дозволені організацією системи, контроль доступу, місця зберігання й журналювання. Варіанти власного розгортання — LimeSurvey, KoBoToolbox та інші спеціалізовані рішення.</p><div class="note">QR-код — лише спосіб передати адресу форми, а не механізм захисту. Анонімність не можна гарантувати лише відсутністю поля «Ім’я»: платформа може зберігати технічні журнали.</div></div></section>
+<section class="panel" id="practice"><div class="sectionmark">ІНТЕРАКТИВНИЙ ПРАКТИКУМ</div><h2>Тренажери: скрапінг і формалізоване донесення</h2><h3>Практика А. Вилучіть дані з навчальної HTML-сторінки</h3><p>Уявіть, що скрипт отримав HTML із трьома картками. Задайте CSS-селектор, щоб дістати тільки заголовки.</p><pre>&lt;article class="item"&gt;&lt;h3 class="title"&gt;Навчання Python&lt;/h3&gt;&lt;/article&gt;
+&lt;article class="item"&gt;&lt;h3 class="title"&gt;Новини університету&lt;/h3&gt;&lt;/article&gt;
+&lt;article class="item"&gt;&lt;h3 class="title"&gt;Практикум з даних&lt;/h3&gt;&lt;/article&gt;</pre><div class="demo"><label for="scrapeSelect">CSS-селектор</label><select id="scrapeSelect"><option value="h3.title">h3.title</option><option value=".item">.item</option><option value="p.title">p.title</option></select><button class="btn" onclick="scrapeDemo()">Вилучити заголовки</button><div class="result" id="scrapeOut">Результати з’являться тут.</div></div>
+<h3>Практика Б. Створіть структурований запис</h3><p>Заповніть синтетичну форму, перевірте коректність і експортуйте результат у CSV. Дані залишаються у вашому браузері до завантаження файлу.</p><form class="demo" id="reportForm"><div class="two"><div class="field"><label for="fDate">Дата огляду *</label><input type="date" id="fDate" required></div><div class="field"><label for="fType">Категорія пристрою *</label><select id="fType" required><option value="">Оберіть...</option><option>Ноутбук</option><option>Принтер</option><option>Маршрутизатор</option></select></div></div><div class="two"><div class="field"><label for="fStatus">Стан *</label><select id="fStatus" required><option value="">Оберіть...</option><option value="ready">Справний</option><option value="repair">Потребує ремонту</option></select></div><div class="field"><label for="fCount">Кількість (1–100) *</label><input type="number" min="1" max="100" id="fCount" required></div></div><div class="field" id="issueField" hidden><label for="fIssue">Опис несправності *</label><textarea id="fIssue" placeholder="Опишіть умовну несправність"></textarea></div><div class="field"><label for="fComment">Коментар</label><textarea id="fComment" placeholder="Необов'язково"></textarea></div><div class="row"><button class="btn" type="submit">Додати до реєстру</button><button class="btn ghost" type="button" onclick="downloadCSV()">Експорт CSV</button><button class="btn ghost" type="button" onclick="clearRecords()">Очистити реєстр</button></div><div class="score" id="formFeedback" role="status"></div></form><h4>Сформований реєстр</h4><div class="scroll"><table><thead><tr><th>Дата</th><th>Категорія</th><th>Стан</th><th>Кількість</th><th>Коментар</th></tr></thead><tbody id="registry"><tr><td colspan="5">Поки немає записів.</td></tr></tbody></table></div><p class="small">Дані не надсилаються на сервер і не зберігаються після оновлення сторінки. Завантажте CSV перед закриттям вкладки.</p></section>
+<section class="panel" id="quiz"><div class="sectionmark">КОНТРОЛЬ ЗАСВОЄННЯ</div><h2>Підсумкова перевірка</h2><form id="quizForm"><div id="questions"></div><button class="btn" type="submit">Перевірити відповіді</button><button class="btn ghost" type="reset">Почати знову</button><div id="quizOut" class="score" role="status"></div></form><div class="note safe">Підсумок: оптимальний метод залежить від інформаційної потреби, дозволеного доступу, формату джерела та вимог до достовірності. Скрапінг, API і формалізовані форми не замінюють, а доповнюють один одного.</div><p class="small">Навчальна основа: «Методи збору даних для інформаційно-аналітичного забезпечення органів військового управління», PDF, розділи 1.1–1.2 і 2.1–2.2. У вправи включено безпечні синтетичні приклади замість реальних чутливих даних.</p></section>
+</main></div><footer class="foot">МетІАЗ ОВУ · Заняття 2.2 · Освітня демонстрація · <a href="https://github.com/lotoslena-maker/2_2_practica">lotoslena-maker / 2_2_practica</a></footer>
+<script>
+document.querySelectorAll(".tabs").forEach(t=>t.addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(!b)return;const group=t.dataset.group;t.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll("[data-panel]").forEach(p=>{if(p.dataset.panel.startsWith(group+":"))p.classList.toggle("active",p.dataset.panel===group+":"+b.dataset.tab);});}));
+function put(id,s){document.getElementById(id).textContent=s}
+function buildRequest(){const c=document.getElementById("category").value,n=document.getElementById("limit").value;put("requestOut","GET /news?category="+c+"&limit="+n+" HTTP/1.1\nHost: example.org\nAccept: application/json\n\n→ HTTP/1.1 200 OK\nContent-Type: application/json\n(синтетична відповідь)")}
+function inspectDOM(){const s=document.getElementById("selector").value,el=document.getElementById("domExample").querySelector(s);put("domOut",el?"Знайдено: "+el.tagName.toLowerCase()+"\nТекст: "+el.textContent.trim():"Елементів із таким селектором не знайдено.")}
+const entries=[{id:1,category:"education",title:"Семінар"},{id:2,category:"education",title:"Практикум"},{id:3,category:"science",title:"Дослідження"}];
+function apiDemo(){const c=document.getElementById("apiCategory").value,n=Number(document.getElementById("apiLimit").value);const items=entries.filter(x=>x.category===c).slice(0,n);put("apiOut","GET /api/news?category="+c+"&limit="+n+"\nHTTP 200 OK\n"+JSON.stringify({count:items.length,items},null,2))}
+function scrapeDemo(){const selector=document.getElementById("scrapeSelect").value;const sample=document.createElement("div");sample.innerHTML='<article class="item"><h3 class="title">Навчання Python</h3></article><article class="item"><h3 class="title">Новини університету</h3></article><article class="item"><h3 class="title">Практикум з даних</h3></article>';const a=[...sample.querySelectorAll(selector)].map(e=>e.textContent.trim());put("scrapeOut",a.length?a.map((v,i)=>(i+1)+". "+v).join("\n"):"Немає збігів. Перевірте назву тега і клас.")}
+let records=[];const status=document.getElementById("fStatus"),issue=document.getElementById("fIssue"),issueBox=document.getElementById("issueField");
+status.addEventListener("change",()=>{const active=status.value==="repair";issueBox.hidden=!active;issue.required=active;if(!active)issue.value=""});
+document.getElementById("reportForm").addEventListener("submit",e=>{e.preventDefault();const f=e.currentTarget;if(!f.reportValidity())return;const r={date:document.getElementById("fDate").value,type:document.getElementById("fType").value,status:status.value,quantity:Number(document.getElementById("fCount").value),issue:issue.value.trim(),comment:document.getElementById("fComment").value.trim()};records.push(r);renderRecords();put("formFeedback","Запис № "+records.length+" додано. Можете експортувати CSV.");f.reset();issueBox.hidden=true;issue.required=false});
+function renderRecords(){const tbody=document.getElementById("registry");tbody.replaceChildren();if(!records.length){const tr=tbody.insertRow(),td=tr.insertCell();td.colSpan=5;td.textContent="Поки немає записів.";return;}records.forEach(r=>{const tr=tbody.insertRow();[r.date,r.type,r.status==="ready"?"Справний":"Потребує ремонту",String(r.quantity),[r.issue,r.comment].filter(Boolean).join("; ")].forEach(v=>tr.insertCell().textContent=v)})}
+function downloadCSV(){if(!records.length){put("formFeedback","Спочатку додайте хоча б один запис.");return;}const fields=["date","type","status","quantity","issue","comment"];const esc=v=>'"'+String(v??"").replace(/"/g,'""')+'"';const csv=[fields.join(","),...records.map(r=>fields.map(k=>esc(r[k])).join(","))].join("\r\n");const url=URL.createObjectURL(new Blob(["\ufeff",csv],{type:"text/csv;charset=utf-8"}));const a=document.createElement("a");a.href=url;a.download="training_records.csv";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);put("formFeedback","CSV експортовано: "+records.length+" запис(ів).")}
+function clearRecords(){records=[];renderRecords();put("formFeedback","Реєстр очищено.")}
+const q=[["Для чого використовується GET?",["Змінити пароль","Отримати ресурс","Видалити таблицю"],1],["Що захищає HTTPS?",["Передавання даних за TLS","Правдивість новин","Відсутність журналів сервера"],0],["Де міститься структура документа?",["CSS","HTML","CSV"],1],["Що робить BeautifulSoup?",["Запускає браузер","Парсить HTML","Створює API-ключ"],1],["Для чого Selenium?",["Автоматизувати браузер і дочекатися JS-контенту","Шифрувати CSV","Замінити сервер"],0],["Що зазвичай повертає веб-API?",["Тільки зображення","JSON або XML","Тільки CSS"],1],["Що дає валідація форми?",["Зменшує кількість помилок вводу","Завжди гарантує правдивість","Видаляє всі дублікати автоматично"],0],["Який спосіб рекомендований при 429?",["Збільшити частоту","Поважати ліміт і Retry-After","Обійти CAPTCHA"],1]];
+document.getElementById("questions").innerHTML=q.map((it,i)=>'<fieldset class="demo choices"><legend><b>'+(i+1)+'. '+it[0]+'</b></legend>'+it[1].map((o,j)=>'<label><input type="radio" name="q'+i+'" value="'+j+'">'+o+'</label>').join("")+'</fieldset>').join("");
+document.getElementById("quizForm").addEventListener("submit",e=>{e.preventDefault();let correct=0;let missed=[];q.forEach((v,i)=>{const checked=document.querySelector('input[name="q'+i+'"]:checked');if(checked&&Number(checked.value)===v[2])correct++;else missed.push(i+1)});const el=document.getElementById("quizOut");el.className="score "+(correct===q.length?"ok":"bad");el.textContent="Результат: "+correct+" із "+q.length+". "+(correct===q.length?"Відмінно!":"Перевірте питання: "+missed.join(", "))});
+document.getElementById("quizForm").addEventListener("reset",()=>{put("quizOut","")});
+</script></body></html>
